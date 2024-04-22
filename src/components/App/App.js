@@ -19,7 +19,9 @@ function App() {
   }
 
   const updateUrls = (newUrl) => {
+    if (!error) {
     setUrls([...urls, newUrl])
+    }
   }
 
   return (
