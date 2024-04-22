@@ -4,7 +4,7 @@ import { getUrls } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
-function App () {
+function App() {
   const [urls, setUrls] = useState([]);
   const [error, setError] = useState('')
 
@@ -14,8 +14,8 @@ function App () {
 
   const fetchUrls = () => {
     getUrls()
-    .then(data => setUrls(data.urls))
-    .catch(error => setError(error.message))
+      .then(data => setUrls(data.urls))
+      .catch(error => setError(error.message))
   }
 
   const updateUrls = (newUrl) => {
@@ -26,10 +26,10 @@ function App () {
     <main className="App">
       <header>
         <h1>URL Shortener</h1>
-        <UrlForm updateUrls={updateUrls} setError={setError}/>
+        <UrlForm updateUrls={updateUrls} setError={setError} />
       </header>
       {error ? <p className='error'>{error}</p> : null}
-      <UrlContainer urls={urls}/>
+      <UrlContainer urls={urls} />
     </main>
   );
 }

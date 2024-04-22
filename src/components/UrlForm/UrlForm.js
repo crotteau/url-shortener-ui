@@ -24,7 +24,7 @@ function UrlForm({ updateUrls, setError }) {
     if (title && urlToShorten) {
       postUrls(addUrl)
         .then(resp => updateUrls(resp))
-        .catch(error => setError(error))
+        .catch(error => setError(error.message))
       setAlert('')
     } else {
       setAlert('Please complete form!')
