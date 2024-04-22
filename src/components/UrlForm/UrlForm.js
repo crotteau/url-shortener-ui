@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { postUrls } from '../../apiCalls';
 
-function UrlForm({ updateUrls }) {
+function UrlForm({ updateUrls, setError }) {
   const [title, setTitle] = useState('');
   const [urlToShorten, setUrlToShorten] = useState('');
+  const [alert, setAlert] = useState('')
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,8 +17,18 @@ function UrlForm({ updateUrls }) {
       long_url: urlToShorten,
       title: title
     }
-    postUrls(addUrl)
-      .then(resp => updateUrls(resp))
+    checkCompletion(addUrl)
+  }
+
+  const checkCompletion = (addUrl) => {
+    if (title && urlToShorten) {
+      postUrls(addUrl)
+        .then(resp => updateUrls(resp))
+        .catch(error => setError(error))
+      setAlert('')
+    } else {
+      setAlert('Please complete form!')
+    }
   }
 
   const clearInputs = () => {
@@ -26,27 +37,30 @@ function UrlForm({ updateUrls }) {
   }
 
   return (
-    <form>
-      <input
-        type='text'
-        placeholder='Title...'
-        name='title'
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-      />
+    <React.Fragment>
+      <form>
+        <input
+          type='text'
+          placeholder='Title...'
+          name='title'
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
 
-      <input
-        type='text'
-        placeholder='URL to Shorten...'
-        name='URL to Shorten'
-        value={urlToShorten}
-        onChange={e => setUrlToShorten(e.target.value)}
-      />
+        <input
+          type='text'
+          placeholder='URL to Shorten...'
+          name='URL-to-Shorten'
+          value={urlToShorten}
+          onChange={e => setUrlToShorten(e.target.value)}
+        />
 
-      <button onClick={e => handleSubmit(e)}>
-        Shorten Please!
-      </button>
-    </form>
+        <button onClick={e => handleSubmit(e)}>
+          Shorten Please!
+        </button>
+        {alert ? <p>{alert}</p> : null}
+      </form>
+    </React.Fragment>
   )
 }
 

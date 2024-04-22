@@ -1,7 +1,7 @@
 import React from 'react';
 import './UrlContainer.css';
 
-function UrlContainer({urls}) {
+function UrlContainer({ urls }) {
 
   const urlEls = urls.map(url => {
     return (
@@ -15,7 +15,7 @@ function UrlContainer({urls}) {
 
   return (
     <section className='url-container'>
-      { urlEls.length ? urlEls : <p>No urls yet! Find some to shorten!</p> }
+      {urlEls.length ? urlEls : <p>No urls yet! Find some to shorten!</p>}
     </section>
   )
 }

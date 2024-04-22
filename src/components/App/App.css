@@ -15,3 +15,9 @@
   background-repeat: no-repeat;
   background-image: url('../../scissors.jpg');
 }
+
+.error {
+  font-size: 2em;
+  font-weight: 600;
+  color: red;
+}
