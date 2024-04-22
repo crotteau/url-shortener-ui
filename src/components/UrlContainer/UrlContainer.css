@@ -1,14 +1,14 @@
 .url-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 12em;
-  grid-auto-rows: 12em;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 14em;
+  grid-auto-rows: 14em;
 }
 
 .url {
   border: 1px solid black;
   display: inline-block;
   margin: 10px;
-  padding: 5px;
+  padding: 15px;
   background-color: #FFF;
 }
