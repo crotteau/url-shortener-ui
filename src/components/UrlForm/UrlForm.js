@@ -58,7 +58,7 @@ function UrlForm({ updateUrls, setError }) {
         <button onClick={e => handleSubmit(e)}>
           Shorten Please!
         </button>
-        {alert ? <p>{alert}</p> : null}
+        {alert ? <p className='alert'>{alert}</p> : null}
       </form>
     </React.Fragment>
   )
